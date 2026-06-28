@@ -1,20 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { SiLeetcode } from 'react-icons/si';
-import MagneticButton from './ui/MagneticButton';
+import MagneticButton from '../ui/MagneticButton';
 
 const Hero: React.FC = () => {
   const [copied, setCopied] = useState(false);
-  const statuses = [
-    "Available for Work",
-    "Waiting for Opportunity",
-    "Open to Collaborate"
-  ];
-  const [statusIndex, setStatusIndex] = useState(0);
-  const [fadeState, setFadeState] = useState("fade-in");
-
   // Typing effect for code snippet
-  const fullCode = `const developer = {\n  name: "Sanjay",\n  role: "Software Engineer",\n  passion: "Automation & Code",\n  hobby: "Cricket 🏏"\n};`;
+  const fullCode = `const developer = {\n  name: "Sanjay",\n  role: "AI Automation Engineer",\n  passion: "Automation & Code",\n  hobby: "Cricket 🏏"\n};`;
   const [typedCode, setTypedCode] = useState("");
 
   useEffect(() => {
@@ -33,17 +25,6 @@ const Hero: React.FC = () => {
       .replace(/"[^"]*"/g, (match) => `<span class="code-string">${match}</span>`);
     return <code dangerouslySetInnerHTML={{ __html: html }} />;
   };
-
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setFadeState("fade-out");
-      setTimeout(() => {
-        setStatusIndex((prev) => (prev + 1) % statuses.length);
-        setFadeState("fade-in");
-      }, 300);
-    }, 3000);
-    return () => clearInterval(interval);
-  }, [statuses.length]);
 
   const copyToClipboard = () => {
     navigator.clipboard.writeText("sanjaynathiya81@gmail.com");
@@ -106,7 +87,7 @@ const Hero: React.FC = () => {
         >
           <motion.div className="status-badge" variants={itemVariants}>
             <span className="status-dot"></span>
-            <span className={`status-text ${fadeState}`}>{statuses[statusIndex]}</span>
+            <span className="status-text fade-in">Available for Work</span>
           </motion.div>
           
           <motion.h1 className="hero-title" variants={titleVariants} initial="hidden" animate="visible">
@@ -132,15 +113,11 @@ const Hero: React.FC = () => {
           </motion.h1>
           
           <motion.p className="hero-description" variants={itemVariants}>
-            I build intelligent digital experiences using AI, Automation, Python, Java and creative coding.
+            I build autonomous systems and intelligent workflows using n8n, Python, and AI agents to solve complex business problems.
           </motion.p>
           
           <motion.div className="hero-ctas" variants={itemVariants}>
-            <a href="#contact" className="btn-primary">
-              Let's Talk
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg>
-            </a>
-            <MagneticButton href="#projects" className="btn-secondary">
+            <MagneticButton href="#projects" className="btn-primary">
               View Work
               <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg>
             </MagneticButton>
@@ -185,13 +162,6 @@ const Hero: React.FC = () => {
                 <div className="photo-placeholder">
                   <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="var(--text-muted)" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
                   <p>Upload Photo Later</p>
-                </div>
-                <div className="photo-brand-overlay">
-                  <span className="brand-logo">PEC-Hacks</span>
-                  <span className="brand-divider">|</span>
-                  <span className="brand-logo">DEVFOLIO</span>
-                  <span className="brand-divider">|</span>
-                  <span className="brand-logo text-blue">ECSoc</span>
                 </div>
               </div>
             </div>
