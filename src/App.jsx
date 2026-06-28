@@ -105,14 +105,13 @@ function App() {
                   <stop offset="100%" stopColor="#FF5E3A" stopOpacity="1" />
                 </linearGradient>
               </defs>
-              <path d="M 50 12 A 38 38 0 0 0 50 88" stroke="currentColor" strokeWidth="6" strokeLinecap="round" strokeOpacity="0.8" />
-              <path d="M 50 88 A 38 38 0 0 0 77 24" stroke="#FFB224" strokeWidth="6" strokeLinecap="round" strokeOpacity="0.8" />
+              <circle cx="50" cy="50" r="38" stroke="currentColor" strokeWidth="5.5" strokeOpacity="0.12" />
               <path d="M 35 36 L 22 50 L 35 64" stroke="currentColor" strokeWidth="6.5" strokeLinecap="round" strokeLinejoin="round" />
               <path d="M 65 36 L 78 50 L 65 64" stroke="currentColor" strokeWidth="6.5" strokeLinecap="round" strokeLinejoin="round" />
               <rect x="48" y="24" width="4" height="20" rx="2" fill="#FF9F1C" />
               <path d="M 45 44 h 10 v 20 a 5 5 0 0 1 -10 0 Z" fill="url(#bat-grad)" />
               <g className="logo-ball">
-                <path d="M 59 87 A 38 38 0 0 1 77 24" stroke="url(#tail-grad)" strokeWidth="6" strokeLinecap="round" fill="none" />
+                <path d="M 23 23 A 38 38 0 0 1 77 24" stroke="url(#tail-grad)" strokeWidth="6" strokeLinecap="round" fill="none" />
                 <circle cx="77" cy="24" r="8" fill="#FF5E3A" />
                 <path d="M 72 21 C 74 23 76 26 82 25" stroke="#FFFFFF" strokeWidth="1.2" strokeDasharray="1.5,1" fill="none" />
               </g>
