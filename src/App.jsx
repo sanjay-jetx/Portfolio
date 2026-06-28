@@ -47,8 +47,10 @@ function App() {
               <path d="M 65 36 L 78 50 L 65 64" stroke="currentColor" strokeWidth="6.5" strokeLinecap="round" strokeLinejoin="round" />
               <rect x="48" y="24" width="4" height="20" rx="2" fill="#FF9F1C" />
               <path d="M 45 44 h 10 v 20 a 5 5 0 0 1 -10 0 Z" fill="url(#bat-grad)" />
-              <circle cx="77" cy="24" r="8" fill="#FF5E3A" />
-              <path d="M 72 21 C 74 23 76 26 82 25" stroke="#FFFFFF" strokeWidth="1.2" strokeDasharray="1.5,1" fill="none" />
+              <g className="logo-ball">
+                <circle cx="77" cy="24" r="8" fill="#FF5E3A" />
+                <path d="M 72 21 C 74 23 76 26 82 25" stroke="#FFFFFF" strokeWidth="1.2" strokeDasharray="1.5,1" fill="none" />
+              </g>
             </svg>
             SANJAY
           </a>
