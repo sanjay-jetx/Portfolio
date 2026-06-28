@@ -21,8 +21,8 @@ const Hero: React.FC = () => {
 
   const renderHighlighted = (code: string) => {
     let html = code
-      .replace(/const/g, '<span class="code-keyword">const</span>')
-      .replace(/"[^"]*"/g, (match) => `<span class="code-string">${match}</span>`);
+      .replace(/"[^"]*"/g, (match) => `<span class='code-string'>${match}</span>`)
+      .replace(/const/g, "<span class='code-keyword'>const</span>");
     return <code dangerouslySetInnerHTML={{ __html: html }} />;
   };
 
@@ -176,9 +176,7 @@ const Hero: React.FC = () => {
             whileHover={widgetHover}
             style={{ zIndex: 10 }}
           >
-            <div className="widget-code-header" style={{ height: '24px', borderBottom: '1px solid rgba(0,0,0,0.05)', marginBottom: '12px', background: 'rgba(0,0,0,0.02)' }}>
-              {/* Removed dots to clean up design */}
-            </div>
+
             <pre className="widget-code-body">
               {renderHighlighted(typedCode)}
               <span className="typing-cursor">|</span>
