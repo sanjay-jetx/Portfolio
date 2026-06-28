@@ -6,7 +6,7 @@ import MagneticButton from '../ui/MagneticButton';
 const Hero: React.FC = () => {
   const [copied, setCopied] = useState(false);
   // Typing effect for code snippet
-  const fullCode = `const developer = {\n  name: "Sanjay",\n  role: "AI Automation Engineer",\n  passion: "Automation & Code",\n  hobby: "Cricket 🏏"\n};`;
+  const fullCode = `const developer = {\n  name: "Sanjay",\n  role: "Software Engineer",\n  passion: "Backend Automation",\n  hobby: "Cricket 🏏"\n};`;
   const [typedCode, setTypedCode] = useState("");
 
   useEffect(() => {
