@@ -106,10 +106,16 @@ a {
   font-weight: 700;
   color: var(--text-light);
   letter-spacing: 1px;
+  display: inline-flex;
+  align-items: center;
 }
 
-.logo-brackets {
-  color: var(--color-amber);
+.logo-svg {
+  width: 28px;
+  height: 28px;
+  margin-right: 10px;
+  display: inline-block;
+  vertical-align: middle;
 }
 
 .nav-menu {
