@@ -172,7 +172,7 @@ a {
 .nav-link {
   color: rgba(248, 250, 252, 0.7);
   font-weight: 500;
-  font-size: 0.95rem;
+  font-size: 1.1rem;
 }
 
 .nav-link:hover {
@@ -470,6 +470,7 @@ a {
   display: flex;
   align-items: center;
   justify-content: center;
+  transform: translateY(-40px) scale(1.15);
 }
 
 .space-glow {
@@ -963,4 +964,14 @@ a {
 
 .main-content.fade-in {
   opacity: 1;
+}
+
+@keyframes slowSpin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.inner-spin-group {
+  animation: slowSpin 8s linear infinite;
+  transform-origin: 20px 20px;
 }

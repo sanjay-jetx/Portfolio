@@ -22,7 +22,7 @@ const Navbar: React.FC<NavbarProps> = ({ fadeLoader, logoRef }) => {
                 fill="none"
                 xmlns="http://www.w3.org/2000/svg"
               >
-                <g className="animate-[spin_8s_linear_infinite] origin-center">
+                <g className="inner-spin-group">
                   {/* Left bracket < */}
                   <path
                     d="M17 10 L8 20 L17 30"

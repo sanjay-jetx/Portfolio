@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
+import { SiLeetcode } from 'react-icons/si';
 
 const Hero: React.FC = () => {
   const [copied, setCopied] = useState(false);
@@ -23,7 +24,7 @@ const Hero: React.FC = () => {
   }, []);
 
   const copyToClipboard = () => {
-    navigator.clipboard.writeText("sanjay@example.com"); // Replace with actual email later
+    navigator.clipboard.writeText("sanjaynathiya81@gmail.com");
     setCopied(true);
     setTimeout(() => setCopied(false), 2000);
   };
@@ -93,14 +94,14 @@ const Hero: React.FC = () => {
           <motion.div className="social-connect" variants={itemVariants}>
             <span className="connect-label">Let's connect</span>
             <div className="social-icons">
-              <a href="https://github.com" target="_blank" rel="noopener noreferrer" className="social-icon-link" title="GitHub">
+              <a href="https://github.com/sanjay-jetx" target="_blank" rel="noopener noreferrer" className="social-icon-link" title="GitHub">
                 <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
               </a>
-              <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" className="social-icon-link" title="LinkedIn">
+              <a href="https://www.linkedin.com/in/sanjay-m-86830426a/" target="_blank" rel="noopener noreferrer" className="social-icon-link" title="LinkedIn">
                 <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg>
               </a>
-              <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" className="social-icon-link" title="Twitter">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"></path></svg>
+              <a href="https://leetcode.com/u/s4njay/" target="_blank" rel="noopener noreferrer" className="social-icon-link" title="LeetCode">
+                <SiLeetcode size={20} />
               </a>
               <button onClick={copyToClipboard} className="social-icon-link email-btn" title="Copy Email">
                 {copied ? (
@@ -147,18 +148,14 @@ const Hero: React.FC = () => {
                   }}
                 /> */}
                 <div className="photo-brand-overlay">
-                  <span className="brand-logo text-orange">MLH</span>
+                  <span className="brand-logo text-orange">PEC-Hacks</span>
                   <span className="brand-divider">|</span>
-                  <span className="brand-logo">Devfolio</span>
+                  <span className="brand-logo">DEVFOLIO</span>
                   <span className="brand-divider">|</span>
-                  <span className="brand-logo">orkes</span>
-                  <span className="brand-divider">|</span>
-                  <span className="brand-logo text-blue">IEEE</span>
+                  <span className="brand-logo text-blue">ECSoc</span>
                 </div>
               </div>
-              <div className="photo-coords">
-                LAT: 13.0827° N / LON: 80.2707° E
-              </div>
+
             </div>
           </motion.div>
           
@@ -196,26 +193,59 @@ const Hero: React.FC = () => {
             whileHover={widgetHover}
           >
             <div className="widget-title">AUTOMATION WORKFLOW</div>
-            <div className="workflow-steps">
-              <div className="step-node" title="Webhook Trigger">
+            <div className="workflow-steps" style={{ paddingBottom: '35px' }}>
+              <div className="step-node" title="Data Intake">
                 <div className="step-icon webhook">
-                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><circle cx="12" cy="12" r="10"></circle><polyline points="12 8 8 12 12 16"></polyline><line x1="16" y1="12" x2="8" y2="12"></line></svg>
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
                 </div>
-                <span>Webhook</span>
+                <span>Data Intake</span>
               </div>
               <div className="step-arrow">➔</div>
-              <div className="step-node" title="n8n Pipeline">
+              <div className="step-node" title="AI Agent" style={{ position: 'relative' }}>
                 <div className="step-icon n8n">
-                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><path d="M22 12h-4l-3 9L9 3l-3 9H2"></path></svg>
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><rect x="4" y="9" width="16" height="10" rx="2" ry="2"></rect><path d="M12 9V5"></path><path d="M10 5h4"></path><path d="M9 13v2"></path><path d="M15 13v2"></path><path d="M4 14H2"></path><path d="M22 14h-2"></path></svg>
                 </div>
-                <span>n8n Pipeline</span>
+                <span>AI Agent</span>
+                
+                {/* Agent Sub-nodes Diagram */}
+                <div style={{ 
+                  position: 'absolute', top: '100%', left: '50%', transform: 'translateX(-50%)', 
+                  display: 'flex', gap: '12px', marginTop: '10px', pointerEvents: 'none', whiteSpace: 'nowrap'
+                }}>
+                  {/* Chat Model */}
+                  <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '2px' }}>
+                    <div style={{ width: '6px', height: '6px', background: 'var(--text-muted)', transform: 'rotate(45deg)', marginBottom: '-6px', zIndex: 1 }} />
+                    <svg width="2" height="16" viewBox="0 0 2 16"><line x1="1" y1="0" x2="1" y2="16" stroke="var(--text-muted)" strokeWidth="1" strokeDasharray="2 2"/></svg>
+                    <span style={{ fontSize: '0.5rem', color: 'var(--text-muted)', marginTop: '2px' }}>Chat Model<span style={{color: 'var(--color-rose)'}}>*</span></span>
+                  </div>
+                  
+                  {/* Memory */}
+                  <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '2px' }}>
+                    <div style={{ width: '6px', height: '6px', background: 'var(--text-muted)', transform: 'rotate(45deg)', marginBottom: '-6px', zIndex: 1 }} />
+                    <div style={{ width: '1px', height: '16px', background: 'var(--text-muted)' }}></div>
+                    <div style={{ width: '14px', height: '14px', background: 'rgba(255,255,255,0.05)', border: '1px solid rgba(255,255,255,0.1)', borderRadius: '3px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                       <span style={{ fontSize: '0.6rem', color: 'var(--text-muted)' }}>+</span>
+                    </div>
+                    <span style={{ fontSize: '0.5rem', color: 'var(--text-muted)' }}>Memory</span>
+                  </div>
+
+                  {/* Tool */}
+                  <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '2px' }}>
+                    <div style={{ width: '6px', height: '6px', background: 'var(--text-muted)', transform: 'rotate(45deg)', marginBottom: '-6px', zIndex: 1 }} />
+                    <div style={{ width: '1px', height: '16px', background: 'var(--text-muted)' }}></div>
+                    <div style={{ width: '14px', height: '14px', background: 'rgba(255,255,255,0.05)', border: '1px solid rgba(255,255,255,0.1)', borderRadius: '3px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                       <span style={{ fontSize: '0.6rem', color: 'var(--text-muted)' }}>+</span>
+                    </div>
+                    <span style={{ fontSize: '0.5rem', color: 'var(--text-muted)' }}>Tool</span>
+                  </div>
+                </div>
               </div>
               <div className="step-arrow">➔</div>
-              <div className="step-node" title="Vector Database">
+              <div className="step-node" title="Execute Task">
                 <div className="step-icon db">
-                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><ellipse cx="12" cy="5" rx="9" ry="3"></ellipse><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"></path><path d="M3 12c0 1.66 4 3 9 3s9-1.34 9-3"></path></svg>
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon></svg>
                 </div>
-                <span>Vector DB</span>
+                <span>Execute Task</span>
               </div>
             </div>
           </motion.div>
