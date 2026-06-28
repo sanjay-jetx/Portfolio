@@ -2,7 +2,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
 
-import TechBackground from './components/TechBackground';
+import CursorGlow from './components/ui/CursorGlow';
 import { useLenis } from './hooks/useLenis';
 
 const App: React.FC = () => {
@@ -71,7 +71,7 @@ const App: React.FC = () => {
         <div className={`page-loader ${fadeLoader ? 'fade-out' : ''}`} />
       )}
       <div className="portfolio-app">
-        <TechBackground />
+        <CursorGlow />
         <Navbar fadeLoader={fadeLoader} logoRef={logoRef} />
         
         <main className={`main-content ${fadeLoader ? 'fade-in' : ''}`}>

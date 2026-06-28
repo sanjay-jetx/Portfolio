@@ -297,9 +297,10 @@ a {
 }
 
 .hero-title {
-  font-size: 3.5rem;
-  font-weight: 700;
-  line-height: 1.15;
+  font-size: 3.8rem;
+  font-weight: 800;
+  line-height: 1.05;
+  letter-spacing: -0.02em;
   color: var(--text-main);
 }
 
@@ -310,7 +311,7 @@ a {
 }
 
 .highlight-text {
-  background: linear-gradient(135deg, var(--color-rose) 0%, var(--color-amber) 100%);
+  background: linear-gradient(135deg, var(--text-main) 0%, var(--color-slate) 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   display: inline-block;
@@ -335,8 +336,23 @@ a {
 
 .hero-description {
   font-size: 1.15rem;
+  line-height: 1.5;
+  letter-spacing: -0.01em;
   color: var(--text-muted);
-  max-width: 500px;
+  max-width: 520px;
+}
+
+.typing-cursor {
+  display: inline-block;
+  opacity: 1;
+  animation: blink 1s step-end infinite;
+  color: var(--text-muted);
+  font-weight: bold;
+}
+
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
 }
 
 .hero-ctas {
@@ -432,11 +448,11 @@ a {
 }
 
 .social-icon-link:hover {
-  background-color: var(--color-rose);
+  background-color: var(--color-slate);
   color: #FFFFFF;
-  border-color: var(--color-rose);
+  border-color: var(--color-slate);
   transform: translateY(-2px);
-  box-shadow: 0 6px 15px rgba(255, 94, 58, 0.25);
+  box-shadow: 0 6px 15px rgba(78, 128, 152, 0.25);
 }
 
 .email-btn {
