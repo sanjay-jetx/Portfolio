@@ -22,30 +22,32 @@ const Navbar: React.FC<NavbarProps> = ({ fadeLoader, logoRef }) => {
                 fill="none"
                 xmlns="http://www.w3.org/2000/svg"
               >
-                {/* Left bracket < */}
-                <path
-                  d="M17 10 L8 20 L17 30"
-                  stroke="url(#bracket-grad)"
-                  strokeWidth="3"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                />
-                {/* Right bracket > */}
-                <path
-                  d="M23 10 L32 20 L23 30"
-                  stroke="url(#bracket-grad)"
-                  strokeWidth="3"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                />
-                {/* Slash / */}
-                <path
-                  d="M22 10 L18 30"
-                  stroke="white"
-                  strokeWidth="2.5"
-                  strokeLinecap="round"
-                  opacity="0.9"
-                />
+                <g className="animate-[spin_8s_linear_infinite] origin-center">
+                  {/* Left bracket < */}
+                  <path
+                    d="M17 10 L8 20 L17 30"
+                    stroke="url(#bracket-grad)"
+                    strokeWidth="3"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  />
+                  {/* Right bracket > */}
+                  <path
+                    d="M23 10 L32 20 L23 30"
+                    stroke="url(#bracket-grad)"
+                    strokeWidth="3"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  />
+                  {/* Slash / */}
+                  <path
+                    d="M22 10 L18 30"
+                    stroke="white"
+                    strokeWidth="2.5"
+                    strokeLinecap="round"
+                    opacity="0.9"
+                  />
+                </g>
                 <defs>
                   <linearGradient id="bracket-grad" x1="0%" y1="0%" x2="100%" y2="100%">
                     <stop offset="0%" stopColor="#FFB224" />
@@ -54,7 +56,9 @@ const Navbar: React.FC<NavbarProps> = ({ fadeLoader, logoRef }) => {
                 </defs>
               </svg>
             </div>
-            <span className={`logo-text ${fadeLoader ? 'fade-in' : ''}`}>SANJAY</span>
+            <span className={`logo-text ${fadeLoader ? 'fade-in' : ''}`}>
+              SA<span style={{ color: 'var(--color-amber)' }}>N</span>JAY
+            </span>
           </a>
 
           {/* Nav Links */}
