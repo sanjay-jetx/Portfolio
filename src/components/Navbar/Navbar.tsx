@@ -57,7 +57,7 @@ const Navbar: React.FC<NavbarProps> = ({ fadeLoader, logoRef }) => {
               </svg>
             </div>
             <span className={`logo-text ${fadeLoader ? 'fade-in' : ''}`}>
-              SANJAY
+              SA<span style={{ color: 'var(--color-rose)' }}>N</span>JAY
             </span>
           </a>
 

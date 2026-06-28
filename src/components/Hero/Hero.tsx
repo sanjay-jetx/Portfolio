@@ -99,8 +99,8 @@ const Hero: React.FC = () => {
             </div>
             <div style={{ overflow: 'hidden', display: 'flex', flexWrap: 'wrap', alignItems: 'center' }}>
               {renderWords("I'm")}
-              <span style={{ display: 'inline-block', overflow: 'hidden', paddingBottom: '0.1em' }}>
-                <motion.span variants={wordVariants} className="highlight-text" style={{ display: 'inline-block' }}>Sanjay,</motion.span>
+              <span className="highlight-text" style={{ display: 'inline-block', overflow: 'hidden', paddingBottom: '0.1em' }}>
+                <motion.span variants={wordVariants} style={{ display: 'inline-block' }}>Sanjay,</motion.span>
               </span>
             </div>
             <div style={{ overflow: 'hidden', display: 'flex', flexWrap: 'wrap', alignItems: 'center' }}>
@@ -108,7 +108,7 @@ const Hero: React.FC = () => {
               {renderWords("&")}
             </div>
             <div style={{ overflow: 'hidden', display: 'flex', flexWrap: 'wrap', alignItems: 'center' }}>
-              {renderWords("AI Automation Engineer")}
+              {renderWords("AI Automation Engineer", "bold-title")}
             </div>
           </motion.h1>
           
