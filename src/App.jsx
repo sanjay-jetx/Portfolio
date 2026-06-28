@@ -1,9 +1,10 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 
 function App() {
   const [copied, setCopied] = useState(false);
   const [loading, setLoading] = useState(true);
   const [fadeLoader, setFadeLoader] = useState(false);
+  const logoRef = useRef(null);
 
   const statuses = [
     "Available for Work",
@@ -13,22 +14,59 @@ function App() {
   const [statusIndex, setStatusIndex] = useState(0);
   const [fadeState, setFadeState] = useState("fade-in");
 
-  React.useEffect(() => {
-    const fadeTimeout = setTimeout(() => {
-      setFadeLoader(true);
-    }, 2000);
+  useEffect(() => {
+    const logoEl = logoRef.current;
+    if (logoEl) {
+      // 1. Calculate positions to center the logo on mount
+      const rect = logoEl.getBoundingClientRect();
+      const logoCenterX = rect.left + rect.width / 2;
+      const logoCenterY = rect.top + rect.height / 2;
+      const viewportCenterX = window.innerWidth / 2;
+      const viewportCenterY = window.innerHeight / 2;
+      const dx = viewportCenterX - logoCenterX;
+      const dy = viewportCenterY - logoCenterY;
 
-    const removeTimeout = setTimeout(() => {
-      setLoading(false);
-    }, 2500);
+      // 2. Position logo in center, scaled up
+      logoEl.style.transform = `translate(${dx}px, ${dy}px) scale(3.5)`;
+      logoEl.style.transition = 'none';
+      logoEl.style.zIndex = '10001';
 
-    return () => {
-      clearTimeout(fadeTimeout);
-      clearTimeout(removeTimeout);
-    };
+      // 3. Accelerate ball rotation in loading phase
+      const ballEl = logoEl.querySelector('.logo-ball');
+      if (ballEl) {
+        ballEl.style.animationDuration = '1.5s';
+      }
+
+      // 4. Start transition back to navbar after 600ms (fast & snappy)
+      const transitionTimeout = setTimeout(() => {
+        if (logoEl) {
+          logoEl.style.transition = 'transform 0.9s cubic-bezier(0.16, 1, 0.3, 1)';
+          logoEl.style.transform = 'translate(0px, 0px) scale(1)';
+        }
+        if (ballEl) {
+          ballEl.style.transition = 'animation-duration 0.9s';
+          ballEl.style.animationDuration = '6s';
+        }
+        setFadeLoader(true);
+      }, 600);
+
+      // 5. Cleanup styles and remove loader background overlay
+      const finishTimeout = setTimeout(() => {
+        setLoading(false);
+        if (logoEl) {
+          logoEl.style.zIndex = '';
+          logoEl.style.transition = '';
+        }
+      }, 1500);
+
+      return () => {
+        clearTimeout(transitionTimeout);
+        clearTimeout(finishTimeout);
+      };
+    }
   }, []);
 
-  React.useEffect(() => {
+  useEffect(() => {
     const interval = setInterval(() => {
       setFadeState("fade-out");
       setTimeout(() => {
@@ -48,67 +86,53 @@ function App() {
   return (
     <>
       {loading && (
-        <div className={`page-loader ${fadeLoader ? 'fade-out' : ''}`}>
-          <div className="loader-logo-wrapper">
-            <svg className="loader-logo-svg" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <defs>
-                <linearGradient id="loader-bat-grad" x1="0%" y1="0%" x2="0%" y2="100%">
-                  <stop offset="0%" stopColor="#FFB224" />
-                  <stop offset="100%" stopColor="#FF5E3A" />
-                </linearGradient>
-              </defs>
-              <path d="M 50 12 A 38 38 0 0 0 50 88" stroke="#1A1D20" strokeWidth="6" strokeLinecap="round" />
-              <path d="M 50 88 A 38 38 0 0 0 77 24" stroke="#FFB224" strokeWidth="6" strokeLinecap="round" />
-              <path d="M 35 36 L 22 50 L 35 64" stroke="#1A1D20" strokeWidth="6.5" strokeLinecap="round" strokeLinejoin="round" />
-              <path d="M 65 36 L 78 50 L 65 64" stroke="#1A1D20" strokeWidth="6.5" strokeLinecap="round" strokeLinejoin="round" />
-              <rect x="48" y="24" width="4" height="20" rx="2" fill="#FF9F1C" />
-              <path d="M 45 44 h 10 v 20 a 5 5 0 0 1 -10 0 Z" fill="url(#loader-bat-grad)" />
-              <g className="logo-ball">
-                <circle cx="77" cy="24" r="8" fill="#FF5E3A" />
-                <path d="M 72 21 C 74 23 76 26 82 25" stroke="#FFFFFF" strokeWidth="1.2" strokeDasharray="1.5,1" fill="none" />
-              </g>
-            </svg>
-          </div>
-        </div>
+        <div className={`page-loader ${fadeLoader ? 'fade-out' : ''}`} />
       )}
       <div className="portfolio-app">
       {/* Sticky Navigation Bar */}
-      <header className="navbar">
+      <header className={`navbar ${fadeLoader ? 'navbar-loaded' : ''}`}>
         <div className="nav-container">
           <a href="#home" className="nav-logo">
-            <svg className="logo-svg" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <svg ref={logoRef} className="logo-svg" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
               <defs>
                 <linearGradient id="bat-grad" x1="0%" y1="0%" x2="0%" y2="100%">
                   <stop offset="0%" stopColor="#FFB224" />
                   <stop offset="100%" stopColor="#FF5E3A" />
                 </linearGradient>
+                <linearGradient id="tail-grad" x1="0%" y1="100%" x2="100%" y2="0%">
+                  <stop offset="0%" stopColor="#FFB224" stopOpacity="0" />
+                  <stop offset="50%" stopColor="#FFB224" stopOpacity="0.5" />
+                  <stop offset="100%" stopColor="#FF5E3A" stopOpacity="1" />
+                </linearGradient>
               </defs>
-              <path d="M 50 12 A 38 38 0 0 0 50 88" stroke="currentColor" strokeWidth="6" strokeLinecap="round" />
-              <path d="M 50 88 A 38 38 0 0 0 77 24" stroke="#FFB224" strokeWidth="6" strokeLinecap="round" />
+              <path d="M 50 12 A 38 38 0 0 0 50 88" stroke="currentColor" strokeWidth="6" strokeLinecap="round" strokeOpacity="0.8" />
+              <path d="M 50 88 A 38 38 0 0 0 77 24" stroke="#FFB224" strokeWidth="6" strokeLinecap="round" strokeOpacity="0.8" />
               <path d="M 35 36 L 22 50 L 35 64" stroke="currentColor" strokeWidth="6.5" strokeLinecap="round" strokeLinejoin="round" />
               <path d="M 65 36 L 78 50 L 65 64" stroke="currentColor" strokeWidth="6.5" strokeLinecap="round" strokeLinejoin="round" />
               <rect x="48" y="24" width="4" height="20" rx="2" fill="#FF9F1C" />
               <path d="M 45 44 h 10 v 20 a 5 5 0 0 1 -10 0 Z" fill="url(#bat-grad)" />
               <g className="logo-ball">
+                <path d="M 59 87 A 38 38 0 0 1 77 24" stroke="url(#tail-grad)" strokeWidth="6" strokeLinecap="round" fill="none" />
                 <circle cx="77" cy="24" r="8" fill="#FF5E3A" />
                 <path d="M 72 21 C 74 23 76 26 82 25" stroke="#FFFFFF" strokeWidth="1.2" strokeDasharray="1.5,1" fill="none" />
               </g>
             </svg>
-            SANJAY
+            <span className={`logo-text ${fadeLoader ? 'fade-in' : ''}`}>SANJAY</span>
           </a>
-          <nav className="nav-menu">
+          <nav className={`nav-menu ${fadeLoader ? 'fade-in' : ''}`}>
             <a href="#about" className="nav-link">About</a>
             <a href="#skills" className="nav-link">Skills</a>
             <a href="#projects" className="nav-link">Projects</a>
             <a href="#resume" className="nav-link">Resume</a>
             <a href="#contact" className="nav-link">Contact</a>
           </nav>
-          <a href="#contact" className="nav-cta-btn">
+          <a href="#contact" className={`nav-cta-btn ${fadeLoader ? 'fade-in' : ''}`}>
             Let's Talk 
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg>
           </a>
         </div>
       </header>
+      <main className={`main-content ${fadeLoader ? 'fade-in' : ''}`}>
 
       {/* Main Hero Section */}
       <section id="home" className="hero-section">
@@ -317,6 +341,7 @@ function App() {
           </div>
         </div>
       </section>
+      </main>
     </div>
     </>
   );
